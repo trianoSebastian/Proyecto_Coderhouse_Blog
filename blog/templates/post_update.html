@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class='container'>
+        <h1>Editar Post<h1>
+            <form method='post'>
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type='submit'>Actualizar</button>
+            </form>
+        <h2>Detalles<h2>
+        <ul>
+            <li>Título: {{object.title}} </li>
+            <li>Contenido: {{object.content}} </li>
+        </ul>
+        <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+            <img src="{{ object.image.url }}" alt="Imagen actual" style="max-width: 100px;">
+            <br>
+            {{ form.image }}
+        </div>
+          
+    </div>
+{% endblock content %}

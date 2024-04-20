@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class='profile-container'>
+    <h2>Actualizar Perfil</h2>
+    <form href='{% url "update_profile" %}' method='post' enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ my_form|crispy }}
+        <button type='submit' class='btn btn-primary'>Guardar</button>
+    </form>
+</div>
+{% endblock content %}

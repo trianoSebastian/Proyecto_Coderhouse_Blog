@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <div class='row'>
+    <div class='col-4 offset-4'>    
+    <div clas='card' style='padding: 10px;'>
+        {% if request.user.is_authenticated %}
+            <a href='{% url "update" object.slug %}' class='btn btn-warning'>Editar</a>
+            <a href='{% url "delete" object.slug %}' class='btn btn-danger'>Borrar</a>
+        {% endif %}
+        <h3>{{object.title}}</3>
+        <img src='{{object.thumbnail.url}}' class='card-img-top' alt='...' style='padding: 5px;'>
+        
+        <hr/>
+
+        <div>
+            <span><i class='fas fa-comments ml-2'></i> {{object.get_comment_count}} </span>
+            <span><i class='fas fa-eye ml-2'></i> {{object.get_view_count}} </span>
+            <span><i class='fas fa-thumbs-up ml-2'></i> {{object.get_like_count}} </span>
+            <span class='float-right'>Subido {{object.publish_date|timesince}} atrás</span>
+        </div>
+
+        <hr/>
+
+        <div style='padding:10px;'>
+            <p> {{object.content}} </p>
+        </div>
+
+        <hr/>
+
+        <div>
+            <h4>Te gustó el post? Dale un like!</h4>
+            <a class='text-muted' href='{{object.get_like_url}}'>
+            .<i class='fas fa-thumbs-up fa-lg'></i>
+            {{object.get_like_count}}
+            </a>
+            <hr/>
+            {% if request.user.is_authenticated %}
+                <h4>Deja un comentario</h4>
+                <form method='post'>
+                {% csrf_token %}
+                {{form|crispy}}
+                <button class='btn btn-primary'>Comentar</button>
+                </form>
+                <hr/>
+                <h5>Comentarios</h5>
+                {% for comment in object.comments %}
+                    <div>
+                        <p>{{comment.content}}
+                        <br>
+                        <small> {{comment.timestamp|timesince}} atrás</small>
+                        </p>
+                    </div>
+                    <hr/>
+                {% endfor %}
+            {% else %}
+            <a href='{% url "login" %}' class='btn btn-primary btn-block'>Login para comentar</a>
+            {% endif %}            
+        </div>
+    </div>
+    </div>
+{% endblock content %}
