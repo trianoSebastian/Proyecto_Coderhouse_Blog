@@ -71,5 +71,7 @@ paso a paso el recorrido de lo que queremos lograr, es decir prestar atencion al
 Ejemplo el PageNotFound me ocurrió un monton de veces, y con frecuencia era que estaba mal direccionada 
 o mal invocado el template.
 
+Link al repositorio de GitHub:
+https://github.com/trianoSebastian/Proyecto_Final_Triano.git
 
 Nota: la implementación del buscador quedó pendiente.
