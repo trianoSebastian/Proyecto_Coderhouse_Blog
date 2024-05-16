@@ -4,7 +4,7 @@ El Blog tiene las siguientes secciones:
  -Home: que es la página de inicio.
  -BlogList: es la página donde se muestra el listado de los blogs subidos.
  -Un botón de búsqueda.
- -Un botoón de Login.
+ -Un botón de Login.
  -Un botón de Register.
 	Si hay un usuario logueado:
 		-Create: es la página que permite crear un post nuevo.
@@ -55,23 +55,5 @@ CustomUserCreationForm: formulario para manejar el registro de los usuarios.
 CommentForm: formulario para los comentarios.
 AvatarForm: formulario para los avatares.
 UserEditForm: formulario para editar los usuarios.
-
-
-Troubleshooting: problemas con los que me topé y cómo los solucioné.
-
-1. Algo que me pasó mucho es que al trabajar con vistas basadas en clases, muchas veces  las mismas
-funcionan heredando de otras clases que vienen valores o configuraciones predeterminados, y al ser
-que en el proyecto trabajé con modelos personalizados, con frecuencia aparecían conflictos.
-Por ejemplo al usar un modelo de usuario personalizado, tuve que aprender a modificar los formularios
-con los que trabaja Django, de manera que se adaptaran a mi proyecto, en el caso de las validaciones
-para los registros o logins (auth.User vs mi_app.user).
-
-2. Otras veces tuve muchos problemas con los redireccionamientos. Y eso sólo se puede resolver siguiendo
-paso a paso el recorrido de lo que queremos lograr, es decir prestar atencion al enrutamiento. 
-Ejemplo el PageNotFound me ocurrió un monton de veces, y con frecuencia era que estaba mal direccionada 
-o mal invocado el template.
-
-Link al repositorio de GitHub:
-https://github.com/trianoSebastian/Proyecto_Final_Triano.git
 
 Nota: la implementación del buscador quedó pendiente.
