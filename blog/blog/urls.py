@@ -17,7 +17,8 @@ from posts.views import (
     logout_view,
     profile_view,
     update_profile)
-    
+
+from contacto import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
@@ -34,7 +35,8 @@ urlpatterns = [
     path('<slug>/delete/',PostDeleteView.as_view(),name='delete'),
     path('like/<slug>/',like,name='like'),    
     path('logout_view/',logout_view,name='logout_view'),    
-    path('upload_avatar/',UploadAvatarView.as_view(),name='upload_avatar')
+    path('upload_avatar/',UploadAvatarView.as_view(),name='upload_avatar'),
+    path('contacto/',views.contacto,name='contacto'),
 ]
 
 
